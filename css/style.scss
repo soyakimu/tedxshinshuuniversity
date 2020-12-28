@@ -1,0 +1,417 @@
+//*------------------*
+//*  変数管理
+//*------------------*
+
+//color
+$color-black: #222222;
+$color-dark-black: #111111;
+$color-white: #ccc;
+$color-gray: #333333;
+$color-green: #50E3C2;
+$color-dark-green: #1B423D;
+
+
+
+//font-family
+//-->ヒラギノver.
+$font-main: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ",
+  Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+
+//-->游ゴシックver.
+// $font-main:"游ゴシック Medium","Yu Gothic Medium","游ゴシック体",YuGothic,sans-serif;
+
+//*------------------*
+//*  レスポンシブ定義
+//*------------------*
+
+//ブレイクポイント
+$tb: 959px; //タブレット
+$mb: 559px; //スマホ
+
+//@mediaのフォーマット
+//タブレット
+@mixin mobile {
+  @media screen and (max-width: $tb) {
+    @content;
+  }
+}
+//スマホ
+@mixin mobile {
+  @media screen and (max-width: $mb) {
+    @content;
+  }
+}
+
+//*------------------*
+//*  font-size定義
+//*------------------*
+//$sizeにpx表示を入れて使う
+@mixin rem($size) {
+  font-size: $size + px; /*IE9以前に対応する*/
+  font-size: ($size / 16) + rem;
+}
+
+//*------------------*
+//*  base(共通)
+//*------------------*
+* {
+  box-sizing: border-box;
+}
+body {
+  @include rem(14);
+  letter-spacing: 0.2em;
+  color: $color-white;
+  background-color: $color-black;
+  font-family: $font-main;
+  a {
+    color: $color-green;
+  }
+  width: 100%;
+  min-width: 1000px;
+  overflow-x: hidden;
+  @include mobile {
+   min-width: auto;
+  }
+  h2, div, p{
+    @include mobile {
+     font-size: 0.9rem;
+    }
+  }
+}
+img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+//sectionの共通タイトル設定
+.section__ttl {
+  @include rem(18);
+  text-align: center;
+}
+
+//sectionの共通inner設定
+.section__inner {
+  margin: 0 auto;
+  padding: 0 4vw;
+}
+
+//*------------------*
+//*  header
+//*------------------*
+.header {
+  //ヘッダーを固定する場合
+  //position: fixed;
+  @include mobile {
+    background-color: rgba($color-black, 0.7);
+  }
+  &__inner {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2% 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.mv {
+  position: relative;
+  &__ttl-wrap {
+    text-align: center;
+    padding: 150px;
+    @include mobile {
+     padding: 150px 0;
+    }
+  }
+  &__ttl {
+    width: 500px;
+    margin: 0 auto 40px;
+    @include mobile {
+      width: 300px;
+    }
+  }
+  &__copy {
+    width: 320px;
+    margin: 0 auto;
+    @include mobile {
+      width: 200px;
+    }
+  }
+}
+
+
+.circle {
+  top: 20px;
+  z-index: -1;
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 4px solid $color-dark-green;
+  font-size:36px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  transform: scale(0);/*非表示にしておく*/
+  animation-name:circle;
+  animation-duration:4s;
+  animation-fill-mode:forwards;
+  animation-iteration-count:infinite;   
+}
+@keyframes circle{
+  0%{
+    transform: scale(0);    
+  }
+  100%{
+    transform: scale(1);    
+  }
+}
+.aboutUs {
+  background-color: $color-dark-black;
+  position: relative;
+  z-index: -2;
+  &__inner {
+    width: 500px;
+    margin: 0 auto;
+    padding: 40px 0 80px;
+    @include mobile {
+      width: 300px;
+      margin: 0 auto;
+      padding: 40px 0 80px;
+      
+    }
+    h2 {
+      text-align: center;
+    }
+    a {
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+    }
+    .circle {
+      top: 20px;
+      right: -100px;
+      z-index: -1;
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      border: 4px solid $color-gray;
+      font-size:36px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      transform: scale(0);/*非表示にしておく*/
+      animation-name:circle;
+      animation-duration:2s;
+      animation-fill-mode:forwards;
+      animation-iteration-count:infinite;
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+}
+.sec {
+  position: relative;
+  padding: 40px 0 80px;
+  &__hd {
+    display: flex;
+    width: 800px;
+    margin: 0 auto;
+    padding: 40px 0 40px;
+    @include mobile {
+      width: 100%;
+      display: block;
+
+    }
+    &-ttl {
+      @include mobile {
+        text-align: center;
+        }
+    }
+    &-txt {
+      padding-bottom: 10px;
+      @include mobile {
+      width: 300px;
+      margin: 0 auto;
+      }
+    }
+    a {
+      @include mobile {
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+      }
+    }
+    &-wrap {
+      align-self: center;
+    }
+    &-img {
+      width: 300px;
+      margin-left: 60px;
+      padding: 50px 0;
+      @include mobile {
+        width: 200px;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+    .age {
+      position: absolute;
+      left: 0;
+      width: 100px;
+      @include mobile {
+        top: 350px;
+        width: 40px;
+      }
+    }
+    .circle {
+      border: 4px solid $color-gray;
+      top: 50px;
+      width: 600px;
+      height: 600px;
+      left: -100px;
+    }
+  }
+}
+.sec__content {
+  // display: flex;
+  width: 990px;
+  margin: 0 auto;
+  justify-content: space-between;
+  @include mobile {
+    width: 100%;
+    justify-content: center;
+  }
+}
+.card-row-01 {
+  display: flex;
+  justify-content: space-between;
+  @include mobile {
+    display: block;
+    justify-content: center;
+  }
+}
+.card-row-02 {
+  margin-top: -60px;
+  display: flex;
+  justify-content: space-between;
+  @include mobile {
+    display: block;
+    justify-content: center;
+    margin-top: 0;
+    .circle {
+      display: none;
+    }
+  }
+  .circle {
+    right: -100px;
+    top: auto;
+    border: 4px solid $color-gray;
+  }
+}
+.card-row-03 {
+  margin-top: -60px;
+  display: flex;
+  justify-content: space-between;
+  @include mobile {
+    display: block;
+    justify-content: center;
+    margin-top: 0;
+    .circle {
+      display: none;
+    }
+  }
+  .circle {
+    right: -100px;
+    top: auto;
+    border: 4px solid $color-gray;
+  }
+}
+.card {
+  width: 300px;
+  height: max-content;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: $color-gray;
+  @include mobile {
+    margin: 10px auto 20px !important;
+  }
+  &__img {
+    border-radius: 50%;
+  }
+  &__name {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 4px;
+  }
+  &__depart {
+    text-align: center;
+    color: #9B9B9B;
+    font-size: 0.8em;
+    margin-bottom: 8px;
+  }
+  &__text {
+    margin-bottom: 10px;
+  }
+  &__youtube {
+
+  }
+}
+.c-02 {
+  margin-top: 50px;
+}
+.c-03 {
+  margin-top: 100px;
+}
+.c-space::after {
+    display: block;
+    content:"";
+    width: 300px;
+}
+.thks {
+  height: 600px;
+  overflow: hidden;
+  background-color: $color-dark-black;
+  position: relative;
+  z-index: -2;
+  @include mobile {
+    height: 600px;
+    }
+  &__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
+    width: 500px;
+    margin: 0 auto;
+    padding: 40px 0 80px;
+    @include mobile {
+    width: 300px;
+    p {
+      font-size: 0.8em;
+    }
+    }
+    h2 {
+      text-align: center;
+    }
+
+  }
+  .bg-img {
+    position: absolute;
+    z-index: -1;
+  }
+}
+.circle {
+  @include mobile {
+  // display: none !important;
+  z-index: -2;
+  width: 450px;
+  height: 450px;
+  }
+}
