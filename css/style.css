@@ -4,6 +4,7 @@
 }
 
 body {
+  margin: 0;
   font-size: 14px;
   /*IE9以前に対応する*/
   font-size: 0.875rem;
@@ -11,21 +12,24 @@ body {
   color: #ccc;
   background-color: #222222;
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-  width: 100%;
-  min-width: 1000px;
-  overflow-x: hidden;
 }
 body a {
   color: #50E3C2;
 }
 @media screen and (max-width: 559px) {
-  body {
-    min-width: 100%;
-  }
-}
-@media screen and (max-width: 559px) {
   body h2, body div, body p {
     font-size: 0.9rem;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  min-width: 1000px;
+  overflow-x: hidden;
+}
+@media screen and (max-width: 559px) {
+  .wrapper {
+    min-width: 100%;
   }
 }
 

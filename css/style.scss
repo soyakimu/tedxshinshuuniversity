@@ -58,6 +58,7 @@ $mb: 559px; //スマホ
   box-sizing: border-box;
 }
 body {
+  margin: 0;
   @include rem(14);
   letter-spacing: 0.2em;
   color: $color-white;
@@ -66,16 +67,18 @@ body {
   a {
     color: $color-green;
   }
+  h2, div, p{
+    @include mobile {
+     font-size: 0.9rem;
+    }
+  }
+}
+.wrapper {
   width: 100%;
   min-width: 1000px;
   overflow-x: hidden;
   @include mobile {
    min-width: 100%;
-  }
-  h2, div, p{
-    @include mobile {
-     font-size: 0.9rem;
-    }
   }
 }
 img {
