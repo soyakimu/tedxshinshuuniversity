@@ -20,7 +20,7 @@ body a {
 }
 @media screen and (max-width: 559px) {
   body {
-    min-width: auto;
+    min-width: 100%;
   }
 }
 @media screen and (max-width: 559px) {

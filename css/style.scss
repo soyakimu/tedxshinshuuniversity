@@ -70,7 +70,7 @@ body {
   min-width: 1000px;
   overflow-x: hidden;
   @include mobile {
-   min-width: auto;
+   min-width: 100%;
   }
   h2, div, p{
     @include mobile {
