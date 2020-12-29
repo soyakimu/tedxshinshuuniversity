@@ -394,6 +394,11 @@ img {
     width: 500px;
     margin: 0 auto;
     padding: 40px 0 80px;
+    &-name {
+      font-weight: bold;
+      text-align: center;
+      font-size: 0.8em;
+    }
     @include mobile {
     width: 300px;
     p {

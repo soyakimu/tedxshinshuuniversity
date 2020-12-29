@@ -380,6 +380,11 @@ img {
   margin: 0 auto;
   padding: 40px 0 80px;
 }
+.thks__inner-name {
+  font-weight: bold;
+  text-align: center;
+  font-size: 0.8em;
+}
 @media screen and (max-width: 559px) {
   .thks__inner {
     width: 300px;
