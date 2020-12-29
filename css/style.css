@@ -127,7 +127,7 @@ img {
 .aboutUs {
   background-color: #111111;
   position: relative;
-  z-index: -2;
+  z-index: 0;
 }
 .aboutUs__inner {
   width: 500px;

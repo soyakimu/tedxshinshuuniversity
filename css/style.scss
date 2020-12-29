@@ -172,7 +172,7 @@ img {
 .aboutUs {
   background-color: $color-dark-black;
   position: relative;
-  z-index: -2;
+  z-index: 0;
   &__inner {
     width: 500px;
     margin: 0 auto;
